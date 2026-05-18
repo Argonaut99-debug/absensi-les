@@ -3,237 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jurnal & Absensi Kalender Les</title>
+    <title>Jurnal & Absensi Cloud Les</title>
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            background-color: #f0f4f8;
-            padding: 20px;
-            color: #333;
-        }
-        .main-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 768px) {
-            .main-wrapper {
-                grid-template-columns: 1.2fr 1fr;
-            }
-        }
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        h2, h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        /* Style Kalender */
-        input[type="date"] {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #3182ce;
-            border-radius: 8px;
-            outline: none;
-            text-align: center;
-            font-weight: bold;
-            color: #3182ce;
-            background-color: #fff;
-        }
-        /* Style Form Konten */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #4a5568;
-        }
-        textarea {
-            width: 100%;
-            height: 80px;
-            padding: 10px;
-            border: 1px solid #cbd5e0;
-            border-radius: 6px;
-            font-size: 15px;
-            resize: none;
-        }
-        /* Checklist Siswa */
-        .student-list {
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            max-height: 250px;
-            overflow-y: auto;
-        }
-        .student-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 15px;
-            border-bottom: 1px solid #edf2f7;
-        }
-        .student-item:last-child {
-            border-bottom: none;
-        }
-        input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-            accent-color: #3182ce;
-        }
-        /* Tombol-tombol */
-        .btn-block {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 12px;
-            text-align: center;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        .btn-blue {
-            background-color: #3182ce;
-            color: white;
-        }
-        .btn-blue:hover {
-            background-color: #2b6cb0;
-        }
-        .btn-green {
-            background-color: #25d366;
-            color: white;
-        }
-        .btn-green:hover {
-            background-color: #1ebd58;
-        }
-        .btn-action {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-right: 10px;
-            margin-bottom: 15px;
-        }
-        .btn-view { background-color: #4a5568; color: white; }
-        .btn-delete { background-color: #e53e3e; color: white; }
-        
-        /* Notifikasi */
-        .notif {
-            text-align: center;
-            color: #38a169;
-            font-weight: bold;
-            margin-top: 10px;
-            display: none;
-        }
-        /* Style Tabel Riwayat */
-        .riwayat-wrapper {
-            max-width: 900px;
-            margin: 20px auto 0 auto;
-        }
-        .tabel-riwayat {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 14px;
-            display: none;
-        }
-        .tabel-riwayat th, .tabel-riwayat td {
-            border: 1px solid #cbd5e0;
-            padding: 10px;
-            text-align: left;
-        }
-        .tabel-riwayat th {
-            background-color: #edf2f7;
-        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
+        body { background-color: #f0f4f8; padding: 20px; color: #333; }
+        .main-wrapper { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .main-wrapper { grid-template-columns: 1.2fr 1fr; } }
+        .card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2, h3 { color: #2c3e50; margin-bottom: 15px; }
+        input[type="date"] { width: 100%; padding: 12px; font-size: 16px; border: 2px solid #3182ce; border-radius: 8px; outline: none; text-align: center; font-weight: bold; color: #3182ce; background-color: #fff; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; color: #4a5568; }
+        textarea { width: 100%; height: 80px; padding: 10px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 15px; resize: none; }
+        .student-list { border: 1px solid #e2e8f0; border-radius: 8px; max-height: 250px; overflow-y: auto; }
+        .student-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; border-bottom: 1px solid #edf2f7; }
+        .student-item:last-child { border-bottom: none; }
+        input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: #3182ce; }
+        .btn-block { display: block; width: 100%; padding: 12px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 12px; text-align: center; text-decoration: none; }
+        .btn-blue { background-color: #3182ce; color: white; }
+        .btn-green { background-color: #25d366; color: white; }
+        .btn-action { padding: 10px 15px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-bottom: 15px; background-color: #4a5568; color: white; }
+        .notif { text-align: center; color: #38a169; font-weight: bold; margin-top: 10px; display: none; }
+        .riwayat-wrapper { max-width: 900px; margin: 20px auto 0 auto; }
+        .tabel-riwayat { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; display: none; }
+        .tabel-riwayat th, .tabel-riwayat td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; }
+        .tabel-riwayat th { background-color: #edf2f7; }
     </style>
 </head>
 <body>
 
 <div class="main-wrapper">
-    
-    <!-- SISI KIRI: KALENDER -->
+    <!-- SISI KIRI -->
     <div class="card">
         <h2>📅 Pilih Tanggal Les</h2>
-        <div class="form-group">
-            <input type="date" id="kalenderPicker">
-        </div>
-        <p style="font-size: 14px; color: #718096; text-align: center; margin-top: 10px;">
-            *Silakan pilih tanggal untuk melihat, mengisi, atau mengirim laporan WA pada hari tersebut.
-        </p>
+        <div class="form-group"><input type="date" id="kalenderPicker"></div>
     </div>
 
-    <!-- SISI KANAN: INPUT DATA -->
+    <!-- SISI KANAN -->
     <div class="card">
         <h3 id="displayTanggal">Detail Jurnal</h3>
-        
         <form id="jurnalForm">
-            <!-- Isi Materi -->
             <div class="form-group">
                 <label for="materi">Materi Pembelajaran</label>
-                <textarea id="materi" placeholder="Ketik materi pelajaran hari ini..."></textarea>
+                <textarea id="materi" placeholder="Ketik materi pelajaran..."></textarea>
             </div>
-
-            <!-- Checklist Siswa -->
             <div class="form-group">
                 <label>Checklist Kedatangan Siswa</label>
-                <div class="student-list" id="daftarSiswaContainer">
-                    <!-- Diisi otomatis oleh JavaScript -->
-                </div>
+                <div class="student-list" id="daftarSiswaContainer"></div>
             </div>
-
-            <!-- Tombol Simpan Internal -->
-            <button type="submit" class="btn-block btn-blue">💾 Simpan di HP/Laptop</button>
-            
-            <!-- Tombol Kirim Ke WhatsApp -->
+            <button type="submit" id="btnSimpan" class="btn-block btn-blue">💾 Simpan Online ke Cloud</button>
             <button type="button" class="btn-block btn-green" onclick="kirimKeWA()">🟢 Kirim Laporan ke WA</button>
-            
-            <div class="notif" id="notifSukses">Data Berhasil Disimpan! ✓</div>
+            <div class="notif" id="notifSukses">Memproses data...</div>
         </form>
     </div>
-
 </div>
 
-<!-- BAGIAN BAWAH: DATABASE RIWAYAT -->
 <div class="riwayat-wrapper card">
-    <h3>📂 Data Rekapan Jurnal</h3>
-    <button class="btn-action btn-view" onclick="tampilkanRiwayat()">👁️ Lihat Semua Riwayat</button>
-    <button class="btn-action btn-delete" onclick="hapusSemuaData()">🗑️ Hapus Semua Data</button>
-    
+    <h3>📂 Data Rekapan Jurnal (Google Sheets)</h3>
+    <button class="btn-action" onclick="tampilkanRiwayat()">👁️ Ambil & Lihat Riwayat Dari Cloud</button>
     <table class="tabel-riwayat" id="tabelRiwayat">
         <thead>
-            <tr>
-                <th>Tanggal</th>
-                <th>Materi Pembelajaran</th>
-                <th>Siswa yang Hadir</th>
-            </tr>
+            <tr><th>Tanggal</th><th>Materi Pembelajaran</th><th>Siswa yang Hadir</th></tr>
         </thead>
-        <tbody id="bodyTabelRiwayat">
-            <!-- Data riwayat masuk ke sini -->
-        </tbody>
+        <tbody id="bodyTabelRiwayat"></tbody>
     </table>
 </div>
 
 <script>
-    // ===================================================
-    //  --- SILAKAN GANTI/TAMBAH NAMA SISWA ANDA DI SINI ---
-    // ===================================================
+    // =================================================================
+    // 1. UTAMA: PASTE LINK GOOGLE APPS SCRIPT ANDA DI BAWAH INI !!!
+    // =================================================================
+    const URL_DATABASE = "https://script.google.com/macros/s/AKfycbzr3GuVH5dTFEB_twwqYXKSeGgYMTCxPqzPHnJ6B7RzG9hN7nNqfX3ZIDdD5arCDa4Drg/exec";
+
+    // 2. ATUR NAMA SISWA ANDA DI SINI
     const daftarSiswa = ["Talita"];
 
     const kalenderPicker = document.getElementById('kalenderPicker');
@@ -242,139 +84,94 @@
     const containerSiswa = document.getElementById('daftarSiswaContainer');
     const notifSukses = document.getElementById('notifSukses');
 
-    // Set tanggal default ke hari ini
     const hariIni = new Date().toISOString().split('T')[0];
     kalenderPicker.value = hariIni;
-
-    function formatTanggalTeks(dateString) {
-        return "Jurnal: " + new Date(dateString).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
-    }
+    displayTanggal.innerText = "Jurnal: " + new Date(hariIni).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
 
     function susunDaftarSiswa() {
         containerSiswa.innerHTML = '';
-        daftarSiswa.forEach((nama, index) => {
-            const div = document.createElement('div');
-            div.className = 'student-item';
-            div.innerHTML = `
-                <span>${nama}</span>
-                <input type="checkbox" class="cek-siswa" data-nama="${nama}">
-            `;
-            containerSiswa.appendChild(div);
+        daftarSiswa.forEach(nama => {
+            containerSiswa.innerHTML += `
+                <div class="student-item">
+                    <span>${nama}</span>
+                    <input type="checkbox" class="cek-siswa" data-nama="${nama}">
+                </div>`;
         });
     }
 
-    function muatDataTanggal(tanggal) {
-        displayTanggal.innerText = formatTanggalTeks(tanggal);
-        const semuaData = JSON.parse(localStorage.getItem('jurnalLes')) || {};
-        const dataHariIni = semuaData[tanggal] || { materi: "", kehadiran: [] };
-
-        materiInput.value = dataHariIni.materi;
-        document.querySelectorAll('.cek-siswa').forEach(cb => {
-            const namaSiswa = cb.getAttribute('data-nama');
-            cb.checked = dataHariIni.kehadiran.includes(namaSiswa);
-        });
-    }
-
-    kalenderPicker.addEventListener('change', function() {
-        muatDataTanggal(this.value);
-    });
-
-    // Proses Simpan ke Browser Lokal
+    // KIRIM DATA KE GOOGLE SHEETS
     document.getElementById('jurnalForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const tanggalTerpilih = kalenderPicker.value;
+        const btn = document.getElementById('btnSimpan');
+        btn.disabled = true;
+        notifSukses.innerText = "Sedang Menyimpan ke Google Sheets...";
+        notifSukses.style.display = 'block';
+
         let siswaHadir = [];
-        
         document.querySelectorAll('.cek-siswa').forEach(cb => {
             if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama'));
         });
 
-        const semuaData = JSON.parse(localStorage.getItem('jurnalLes')) || {};
-        semuaData[tanggalTerpilih] = {
+        const dataKirim = {
+            tanggal: kalenderPicker.value,
             materi: materiInput.value,
-            kehadiran: siswaHadir
+            kehadiran: siswaHadir.join(', ')
         };
 
-        localStorage.setItem('jurnalLes', JSON.stringify(semuaData));
-
-        notifSukses.style.display = 'block';
-        setTimeout(() => { notifSukses.style.display = 'none'; }, 2000);
-        
-        if(document.getElementById('tabelRiwayat').style.display === 'table') tampilkanRiwayat();
+        fetch(URL_DATABASE, {
+            method: "POST",
+            body: JSON.stringify(dataKirim)
+        })
+        .then(res => res.json())
+        .then(hasil => {
+            notifSukses.innerText = "Berhasil Disimpan Ke Cloud! ✓";
+            btn.disabled = false;
+            setTimeout(() => { notifSukses.style.display = 'none'; }, 2000);
+        })
+        .catch(err => {
+            alert("Gagal menyimpan ke Cloud. Pastikan internet aktif atau URL script benar.");
+            btn.disabled = false;
+            notifSukses.style.display = 'none';
+        });
     });
 
-    // PROSES CARA KE-1: KIRIM KE WHATSAPP
-    function kirimKeWA() {
-        const tanggalTerpilih = kalenderPicker.value;
-        
-        // Memformat tanggal agar lebih enak dibaca di WA (Contoh: 18 Mei 2026)
-        const tanggalFormatWA = new Date(tanggalTerpilih).toLocaleDateString('id-ID', {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        
-        const materiTerpilih = materiInput.value.trim() || "Tidak ada materi khusus";
-        
-        let siswaHadir = [];
-        let siswaAbsen = [];
-        
-        document.querySelectorAll('.cek-siswa').forEach(cb => {
-            const namaSiswa = cb.getAttribute('data-nama');
-            if (cb.checked) {
-                siswaHadir.push(namaSiswa);
-            } else {
-                siswaAbsen.push(namaSiswa);
+    // AMBIL DATA DARI GOOGLE SHEETS
+    function tampilkanRiwayat() {
+        const tbody = document.getElementById('bodyTabelRiwayat');
+        const tabel = document.getElementById('tabelRiwayat');
+        tbody.innerHTML = '<tr><td colspan="3">Sedang mengambil data dari Cloud...</td></tr>';
+        tabel.style.display = 'table';
+
+        fetch(URL_DATABASE)
+        .then(res => res.json())
+        .then(data => {
+            tbody.innerHTML = '';
+            if(data.length === 0){
+                tbody.innerHTML = '<tr><td colspan="3">Belum ada data di Google Sheets.</td></tr>';
+                return;
             }
+            data.reverse().forEach(row => {
+                let tglFormat = row.tanggal ? row.tanggal.split('T')[0] : '-';
+                tbody.innerHTML += `<tr>
+                    <td><b>${tglFormat}</b></td>
+                    <td>${row.materi || '-'}</td>
+                    <td>${row.kehadiran || 'Tidak ada'}</td>
+                </tr>`;
+            });
         });
+    }
 
-        // Menyusun format teks pesan WhatsApp (Menggunakan kode %0A untuk ganti baris baru)
-        const pesan = `*LAPORAN KEHADIRAN LES* 📝%0A%0A` +
-                      `📅 *Hari/Tanggal:* ${tanggalFormatWA}%0A` +
-                      `📖 *Materi Pelajaran:* ${materiTerpilih}%0A` +
-                      `-----------------------------------------%0A` +
-                      `✅ *Siswa Hadir (${siswaHadir.length}):*%0A${siswaHadir.map(s => `- ${s}`).join('%0A') || '-'}%0A%0A` +
-                      `❌ *Siswa Absen (${siswaAbsen.length}):*%0A${siswaAbsen.map(s => `- ${s}`).join('%0A') || '-'}`;
-
-        // Membuka tautan WhatsApp universal
+    function kirimKeWA() {
+        const tanggalFormatWA = new Date(kalenderPicker.value).toLocaleDateString('id-ID', {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        let siswaHadir = [], siswaAbsen = [];
+        document.querySelectorAll('.cek-siswa').forEach(cb => {
+            if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama')); else siswaAbsen.push(cb.getAttribute('data-nama'));
+        });
+        const pesan = `*LAPORAN KEHADIRAN LES* 📝%0A%0A📅 *Hari/Tanggal:* ${tanggalFormatWA}%0A📖 *Materi:* ${materiInput.value || '-'}%0A-----------------------------------------%0A✅ *Hadir:* ${siswaHadir.join(', ') || '-'}%0A❌ *Absen:* ${siswaAbsen.join(', ') || '-'}`;
         window.open(`https://wa.me/?text=${pesan}`, '_blank');
     }
 
-    function tampilkanRiwayat() {
-        const semuaData = JSON.parse(localStorage.getItem('jurnalLes')) || {};
-        const tabel = document.getElementById('tabelRiwayat');
-        const tbody = document.getElementById('bodyTabelRiwayat');
-        
-        tbody.innerHTML = '';
-        const semuaTanggal = Object.keys(semuaData).sort().reverse();
-        
-        if(semuaTanggal.length === 0) {
-            alert("Belum ada data yang disimpan di perangkat ini.");
-            return;
-        }
-
-        semuaTanggal.forEach(tgl => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td><b>${tgl}</b></td>
-                <td>${semuaData[tgl].materi || '-'}</td>
-                <td>${semuaData[tgl].kehadiran.join(', ') || 'Tidak ada yang hadir'}</td>
-            `;
-            tbody.appendChild(row);
-        });
-
-        tabel.style.display = 'table';
-    }
-
-    function hapusSemuaData() {
-        if(confirm("Apakah Anda yakin ingin menghapus seluruh riwayat? Data tidak bisa dikembalikan!")) {
-            localStorage.removeItem('jurnalLes');
-            document.getElementById('tabelRiwayat').style.display = 'none';
-            muatDataTanggal(kalenderPicker.value);
-            alert("Semua data berhasil dibersihkan.");
-        }
-    }
-
-    // Jalankan sistem saat web dibuka
     susunDaftarSiswa();
-    muatDataTanggal(hariIni);
 </script>
-
 </body>
 </html>
