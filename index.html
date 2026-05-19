@@ -3,183 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 Jurnal & Absensi Ceria Les 🌟</title>
-    <!-- Mengambil Font yang Lucu dan Ramah Anak dari Google Fonts -->
+    <title>🌟 Jurnal Ceria & Foto Les 🌟</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    
     <style>
-        * { 
-            box-sizing: border-box; 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-        }
-        body { 
-            background: linear-gradient(135deg, #ffeb3b, #eceff1, #80deea);
-            background-size: 400% 400%;
-            animation: gantiWarnaBackground 15s ease infinite;
-            padding: 20px; 
-            color: #333; 
-        }
-        
-        /* --- ANIMASI BACKGROUND BERGERAK PELAN --- */
-        @keyframes gantiWarnaBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+        body { background: linear-gradient(135deg, #ffeb3b, #eceff1, #80deea); background-size: 400% 400%; animation: gantiWarnaBackground 15s ease infinite; padding: 20px; color: #333; }
+        @keyframes gantiWarnaBackground { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .main-wrapper { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .main-wrapper { grid-template-columns: 1.2fr 1fr; } }
-        
-        .card { 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 25px; 
-            border-radius: 24px; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08); 
-            border: 4px solid #fff;
-        }
-
-        /* --- ANIMASI JUDUL MELOMPAT-LOMPAT --- */
-        .judul-animasi {
-            text-align: center;
-            color: #ff6f00;
-            font-weight: 800;
-            font-size: 26px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0px #ffe082;
-            animation: melompat 1.5s ease infinite alternate;
-        }
-        @keyframes melompat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-8px); }
-        }
-
+        .card { background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); border: 4px solid #fff; }
+        .judul-animasi { text-align: center; color: #ff6f00; font-weight: 800; font-size: 26px; margin-bottom: 20px; text-shadow: 2px 2px 0px #ffe082; animation: melompat 1.5s ease infinite alternate; }
+        @keyframes melompat { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
         h3 { color: #0288d1; margin-bottom: 15px; font-weight: 600; }
-        
-        /* Style Input Kalender */
-        input[type="date"] { 
-            width: 100%; 
-            padding: 14px; 
-            font-size: 16px; 
-            border: 3px solid #0288d1; 
-            border-radius: 16px; 
-            outline: none; 
-            text-align: center; 
-            font-weight: bold; 
-            color: #0288d1; 
-            background-color: #fff;
-            transition: all 0.3s;
-        }
-        input[type="date"]:focus {
-            transform: scale(1.02);
-            box-shadow: 0 0 12px rgba(2, 136, 209, 0.3);
-        }
-
+        input[type="date"], input[type="file"] { width: 100%; padding: 14px; font-size: 16px; border: 3px solid #0288d1; border-radius: 16px; outline: none; background-color: #fff; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 6px; color: #555; }
-        
-        textarea { 
-            width: 100%; 
-            height: 90px; 
-            padding: 12px; 
-            border: 3px solid #ffb300; 
-            border-radius: 16px; 
-            font-size: 15px; 
-            resize: none; 
-            outline: none;
-            transition: all 0.3s;
-        }
-        textarea:focus {
-            transform: scale(1.02);
-            box-shadow: 0 0 12px rgba(255, 179, 0, 0.3);
-        }
-
-        /* Checklist Siswa yang Lucu */
-        .student-list { border: 3px solid #81c784; border-radius: 16px; max-height: 250px; overflow-y: auto; background: #f1f8e9; }
-        
-        .student-item { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            padding: 14px 20px; 
-            border-bottom: 2px dashed #c8e6c9; 
-            transition: all 0.3s;
-        }
+        textarea { width: 100%; height: 90px; padding: 12px; border: 3px solid #ffb300; border-radius: 16px; font-size: 15px; resize: none; outline: none; }
+        .student-list { border: 3px solid #81c784; border-radius: 16px; max-height: 200px; overflow-y: auto; background: #f1f8e9; }
+        .student-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 2px dashed #c8e6c9; transition: all 0.3s; }
         .student-item:last-child { border-bottom: none; }
-        
-        /* Efek warna hijau jika baris siswa dicentang */
-        .student-item.tercentang {
-            background-color: #c8e6c9;
-            transform: translateX(5px);
-        }
-
+        .student-item.tercentang { background-color: #c8e6c9; transform: translateX(5px); }
         .student-name { font-weight: 600; font-size: 16px; color: #2e7d32; }
-
-        /* Custom Checkbox Gede dan Lucu */
-        input[type="checkbox"] { 
-            width: 26px; 
-            height: 26px; 
-            cursor: pointer; 
-            accent-color: #4caf50;
-            transition: transform 0.2s;
-        }
-        input[type="checkbox"]:scale(1.2) { transform: scale(1.2); }
-
-        /* --- BUTTON BOUNCY (MEMBAL) --- */
-        .btn-block { 
-            display: block; 
-            width: 100%; 
-            padding: 14px; 
-            border: none; 
-            border-radius: 16px; 
-            font-size: 16px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 12px; 
-            text-align: center; 
-            box-shadow: 0 4px 0px rgba(0,0,0,0.15);
-            transition: all 0.1s ease;
-        }
+        input[type="checkbox"] { width: 26px; height: 26px; cursor: pointer; accent-color: #4caf50; }
+        .btn-block { display: block; width: 100%; padding: 14px; border: none; border-radius: 16px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 12px; text-align: center; box-shadow: 0 4px 0px rgba(0,0,0,0.15); transition: all 0.1s ease; }
         .btn-blue { background-color: #29b6f6; color: white; border-bottom: 4px solid #0288d1; }
         .btn-blue:active { transform: translateY(4px); box-shadow: none; }
-        
         .btn-green { background-color: #66bb6a; color: white; border-bottom: 4px solid #388e3c; }
         .btn-green:active { transform: translateY(4px); box-shadow: none; }
-
-        .btn-action { 
-            padding: 12px 20px; 
-            border: none; 
-            border-radius: 12px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-bottom: 15px; 
-            background-color: #78909c; 
-            color: white;
-            border-bottom: 4px solid #455a64;
-        }
+        .btn-action { padding: 12px 20px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; margin-bottom: 15px; background-color: #78909c; color: white; border-bottom: 4px solid #455a64; }
         .btn-action:active { transform: translateY(4px); box-shadow: none; }
-
-        /* Pop-up Animasi Sukses */
-        .notif { 
-            text-align: center; 
-            color: #2e7d32; 
-            font-weight: bold; 
-            margin-top: 10px; 
-            display: none; 
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes popIn {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
-        }
-
+        .notif { text-align: center; color: #2e7d32; font-weight: bold; margin-top: 10px; display: none; }
         .riwayat-wrapper { max-width: 900px; margin: 20px auto 0 auto; background: rgba(255,255,255,0.9); }
-        
         .tabel-riwayat { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; display: none; border-radius: 12px; overflow: hidden; }
         .tabel-riwayat th, .tabel-riwayat td { padding: 12px; text-align: left; }
-        .tabel-riwayat th { background-color: #b3e5fc; color: #0288d1; font-weight: bold; }
+        .tabel-riwayat th { background-color: #b3e5fc; color: #0288d1; }
         .tabel-riwayat td { background-color: #fff; border-bottom: 1px solid #e0e0e0; }
+        .preview-foto { max-width: 100%; max-height: 150px; margin-top: 10px; border-radius: 12px; display: none; border: 2px dashed #0288d1; }
     </style>
 </head>
 <body>
@@ -203,7 +62,15 @@
                 <label>🎒 Siapa Saja yang Datang?</label>
                 <div class="student-list" id="daftarSiswaContainer"></div>
             </div>
-            <button type="submit" id="btnSimpan" class="btn-block btn-blue">🚀 Simpan ke Awan (Cloud)</button>
+            
+            <!-- FITUR BARU: INPUT UPLOAD FOTO -->
+            <div class="form-group">
+                <label>📸 Dokumentasi Foto Kegiatan (Opsional)</label>
+                <input type="file" id="fotoInput" accept="image/*" onchange="previewGambar(this)">
+                <img id="previewObjek" class="preview-foto" src="" alt="Preview Foto">
+            </div>
+
+            <button type="submit" id="btnSimpan" class="btn-block btn-blue">🚀 Simpan ke Cloud & Drive</button>
             <button type="button" class="btn-block btn-green" onclick="kirimKeWA()">🎉 Kirim Laporan ke WA</button>
             <div class="notif" id="notifSukses">Memproses data...</div>
         </form>
@@ -215,7 +82,7 @@
     <button class="btn-action" onclick="tampilkanRiwayat()">👁️ Lihat Semua Catatan</button>
     <table class="tabel-riwayat" id="tabelRiwayat">
         <thead>
-            <tr><th>Tanggal</th><th>Materi Pembelajaran</th><th>Anak Pintar yang Hadir</th></tr>
+            <tr><th>Tanggal</th><th>Materi Pembelajaran</th><th>Siswa Hadir</th><th>Foto Laporan</th></tr>
         </thead>
         <tbody id="bodyTabelRiwayat"></tbody>
     </table>
@@ -223,11 +90,10 @@
 
 <script>
     // =================================================================
-    // ISI LINK GOOGLE APPS SCRIPT ANDA DI BAWAH INI !!!
+    // PASTE LINK GOOGLE APPS SCRIPT BARU ANDA DI BAWAH INI !!!
     // =================================================================
-    const URL_DATABASE = "https://script.google.com/macros/s/AKfycbzr3GuVH5dTFEB_twwqYXKSeGgYMTCxPqzPHnJ6B7RzG9hN7nNqfX3ZIDdD5arCDa4Drg/exec";
+    const URL_DATABASE = "https://script.google.com/macros/s/AKfycbzlOsc18uzp1JWpwiW2bjblvKWQlN-DYwCSesYNszCkBQcK6u7mjLgqDPIdC4wfKsz5dQ/exec";
 
-    // NAMA SISWA ANDA
     const daftarSiswa = ["Talita 👧"];
 
     const kalenderPicker = document.getElementById('kalenderPicker');
@@ -235,6 +101,10 @@
     const materiInput = document.getElementById('materi');
     const containerSiswa = document.getElementById('daftarSiswaContainer');
     const notifSukses = document.getElementById('notifSukses');
+    const fotoInput = document.getElementById('fotoInput');
+    const previewObjek = document.getElementById('previewObjek');
+    
+    let base64Foto = "", tipeFoto = "", namaFoto = "";
 
     const hariIni = new Date().toISOString().split('T')[0];
     kalenderPicker.value = hariIni;
@@ -243,33 +113,40 @@
     function susunDaftarSiswa() {
         containerSiswa.innerHTML = '';
         daftarSiswa.forEach((nama, index) => {
-            const div = document.createElement('div');
-            div.className = 'student-item';
-            div.id = `box_siswa_${index}`;
-            div.innerHTML = `
-                <span class="student-name">${nama}</span>
-                <input type="checkbox" class="cek-siswa" data-nama="${nama}" onchange="efekCentang(this, 'box_siswa_${index}')">
-            `;
-            containerSiswa.appendChild(div);
+            containerSiswa.innerHTML += `
+                <div class="student-item" id="box_siswa_${index}">
+                    <span class="student-name">${nama}</span>
+                    <input type="checkbox" class="cek-siswa" data-nama="${nama}" onchange="efekCentang(this, 'box_siswa_${index}')">
+                </div>`;
         });
     }
 
-    // Fungsi interaktif saat nama anak dicentang
     function efekCentang(checkbox, boxId) {
-        const itemSiswa = document.getElementById(boxId);
-        if(checkbox.checked) {
-            itemSiswa.classList.add('tercentang');
-        } else {
-            itemSiswa.classList.remove('tercentang');
+        document.getElementById(boxId).classList.toggle('tercentang', checkbox.checked);
+    }
+
+    // Fungsi untuk menampilkan preview gambar saat dipilih di HP
+    function previewGambar(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            namaFoto = input.files[0].name;
+            tipeFoto = input.files[0].type;
+            
+            reader.onload = function(e) {
+                previewObjek.src = e.target.result;
+                previewObjek.style.display = 'block';
+                base64Foto = e.target.result; // Ambil string base64 untuk dikirim
+            }
+            reader.readAsDataURL(input.files[0]);
         }
     }
 
-    // SIMPAN ONLINE
+    // SIMPAN DATA & FOTO ONLINE
     document.getElementById('jurnalForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('btnSimpan');
         btn.disabled = true;
-        notifSukses.innerText = "⏳ Sedang menerbangkan data ke awan...";
+        notifSukses.innerText = "⏳ Sedang menerbangkan data & foto ke cloud...";
         notifSukses.style.display = 'block';
 
         let siswaHadir = [];
@@ -280,28 +157,35 @@
         const dataKirim = {
             tanggal: kalenderPicker.value,
             materi: materiInput.value,
-            kehadiran: siswaHadir.join(', ')
+            kehadiran: siswaHadir.join(', '),
+            fotoData: base64Foto,
+            fotoTipe: tipeFoto,
+            fotoNama: namaFoto
         };
 
         fetch(URL_DATABASE, { method: "POST", body: JSON.stringify(dataKirim) })
         .then(res => res.json())
         .then(hasil => {
-            notifSukses.innerText = "🌈 Berhasil Disimpan! Horeee! ✓";
+            notifSukses.innerText = "🌈 Berhasil Disimpan Ke Drive & Sheets! ✓";
             btn.disabled = false;
+            // Reset input foto
+            fotoInput.value = "";
+            previewObjek.style.display = 'none';
+            base64Foto = "";
             setTimeout(() => { notifSukses.style.display = 'none'; }, 2500);
         })
         .catch(err => {
-            alert("Aduh, gagal menyimpan. Coba cek internet Anda ya!");
+            alert("Aduh, gagal menyimpan. Pastikan ukuran foto tidak terlalu raksasa!");
             btn.disabled = false;
             notifSukses.style.display = 'none';
         });
     });
 
-    // LIHAT RIWAYAT
+    // LIHAT DATA DARI GOOGLE SHEETS
     function tampilkanRiwayat() {
         const tbody = document.getElementById('bodyTabelRiwayat');
         const tabel = document.getElementById('tabelRiwayat');
-        tbody.innerHTML = '<tr><td colspan="3">Sedang memanggil catatan... 📡</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="4">Sedang memanggil catatan... 📡</td></tr>';
         tabel.style.display = 'table';
 
         fetch(URL_DATABASE)
@@ -309,27 +193,33 @@
         .then(data => {
             tbody.innerHTML = '';
             if(data.length === 0){
-                tbody.innerHTML = '<tr><td colspan="3">Belum ada catatan terkumpul.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4">Belum ada catatan.</td></tr>';
                 return;
             }
             data.reverse().forEach(row => {
                 let tglFormat = row.tanggal ? row.tanggal.split('T')[0] : '-';
+                let tombolFoto = row.foto && row.foto !== "Tidak ada foto" 
+                    ? `<a href="${row.foto}" target="_blank" style="color:#0288d1; font-weight:bold;">🖼️ Buka Foto</a>` 
+                    : "❌ No Photo";
+                
                 tbody.innerHTML += `<tr>
                     <td><b>📆 ${tglFormat}</b></td>
                     <td>✏️ ${row.materi || '-'}</td>
                     <td>⭐ ${row.kehadiran || 'Tidak ada'}</td>
+                    <td>${tombolFoto}</td>
                 </tr>`;
             });
         });
     }
 
-    // KIRIM WA
+    // KIRIM LAPORAN KE WHATSAPP (BISA DI-PASTE LINK FOTO)
     function kirimKeWA() {
-        const tanggalFormatWA = new Date(kalenderPicker.value).toLocaleDateString('id-ID', {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const tanggalFormatWA = new Date(kalenderPicker.value).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         let siswaHadir = [], siswaAbsen = [];
         document.querySelectorAll('.cek-siswa').forEach(cb => {
             if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama')); else siswaAbsen.push(cb.getAttribute('data-nama'));
         });
+        
         const pesan = `*LAPORAN SERU LES HARI INI* 💫%0A%0A📅 *Hari/Tanggal:* ${tanggalFormatWA}%0A📖 *Materi Belajar:* ${materiInput.value || '-'}%0A-----------------------------------------%0A✅ *Anak Pintar yang Hadir:*%0A${siswaHadir.map(s => `⭐ ${s}`).join('%0A') || '-'}%0A%0A❌ *Izin/Absen Hari Ini:*%0A${siswaAbsen.map(s => `💤 ${s}`).join('%0A') || '-'}`;
         window.open(`https://wa.me/?text=${pesan}`, '_blank');
     }
