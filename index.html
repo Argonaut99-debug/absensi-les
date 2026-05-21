@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 Jurnal Ceria & Foto Les 🌟</title>
+    <title>🌟 Jurnal Ceria & Laporan Foto Les 🌟</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
@@ -38,19 +38,17 @@
         .tabel-riwayat th, .tabel-riwayat td { padding: 12px; text-align: left; }
         .tabel-riwayat th { background-color: #b3e5fc; color: #0288d1; }
         .tabel-riwayat td { background-color: #fff; border-bottom: 1px solid #e0e0e0; }
-        .preview-foto { max-width: 100%; max-height: 150px; margin-top: 10px; border-radius: 12px; display: none; border: 2px dashed #0288d1; }
+        .preview-foto { max-width: 100%; max-height: 150px; margin-top: 10px; border-radius: 12px; display: none; border: 2px dashed #0288d1; margin: 10px auto 0 auto; }
     </style>
 </head>
 <body>
 
 <div class="main-wrapper">
-    <!-- SISI KIRI -->
     <div class="card">
         <h2 class="judul-animasi">🎈 Pilih Hari Les 🎈</h2>
         <div class="form-group"><input type="date" id="kalenderPicker"></div>
     </div>
 
-    <!-- SISI KANAN -->
     <div class="card">
         <h3 id="displayTanggal">✨ Detail Jurnal ✨</h3>
         <form id="jurnalForm">
@@ -63,10 +61,9 @@
                 <div class="student-list" id="daftarSiswaContainer"></div>
             </div>
             
-            <!-- FITUR BARU: INPUT UPLOAD FOTO -->
             <div class="form-group">
-                <label>📸 Dokumentasi Foto Kegiatan (Opsional)</label>
-                <input type="file" id="fotoInput" accept="image/*" onchange="previewGambar(this)">
+                <label>📸 Dokumentasi Foto Kegiatan</label>
+                <input type="file" id="fotoInput" accept="image/*" onchange="prosesDanKompresFoto(this)">
                 <img id="previewObjek" class="preview-foto" src="" alt="Preview Foto">
             </div>
 
@@ -90,11 +87,11 @@
 
 <script>
     // =================================================================
-    // PASTE LINK GOOGLE APPS SCRIPT BARU ANDA DI BAWAH INI !!!
+    // KOPAS LINK WEB APP APPS SCRIPT ANDA (YANG ADA KATA /macros/) DI SINI
     // =================================================================
-    const URL_DATABASE = "https://script.google.com/macros/s/AKfycbxGAgH7k1pqHnAZYKQs4Qc6FznJlyBmR6liAuYQkN4hKRogJikZZLeVkDuNRHElE7Rs5Q/exec";
+    const URL_DATABASE = "https://script.google.com/macros/s/AKfycbzb84jeclqb5sJEyJqyDgm7EIOe3uXO16tJ1oDRkwaRAWm26qn8aMyfuKeD3McBlge99g/exec";
 
-    const daftarSiswa = ["Talita 👧"];
+    const daftarSiswa = ["Talitha 👧"];
 
     const kalenderPicker = document.getElementById('kalenderPicker');
     const displayTanggal = document.getElementById('displayTanggal');
@@ -104,7 +101,7 @@
     const fotoInput = document.getElementById('fotoInput');
     const previewObjek = document.getElementById('previewObjek');
     
-    let base64Foto = "", tipeFoto = "", namaFoto = "";
+    let base64Foto = "", namaFoto = "";
 
     const hariIni = new Date().toISOString().split('T')[0];
     kalenderPicker.value = hariIni;
@@ -125,28 +122,48 @@
         document.getElementById(boxId).classList.toggle('tercentang', checkbox.checked);
     }
 
-    // Fungsi untuk menampilkan preview gambar saat dipilih di HP
-    function previewGambar(input) {
+    // --- PERBAIKAN: Fungsi kompresor gambar canvas sudah dibetulkan total ---
+    function prosesDanKompresFoto(input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
             namaFoto = input.files[0].name;
-            tipeFoto = input.files[0].type;
-            
+            var reader = new FileReader();
             reader.onload = function(e) {
-                previewObjek.src = e.target.result;
-                previewObjek.style.display = 'block';
-                base64Foto = e.target.result; // Ambil string base64 untuk dikirim
+                var img = new Image();
+                img.onload = function() {
+                    var canvas = document.createElement('canvas');
+                    var max_size = 700; 
+                    var width = img.width;
+                    var height = img.height;
+
+                    if (width > height) {
+                        if (width > max_size) { height *= max_size / width; width = max_size; }
+                    } else {
+                        if (height > max_size) { width *= max_size / height; height = max_size; }
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    var ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // Memperbaiki typo pemanggilan fungsi data URL di bawah ini
+                    var dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                    previewObjek.src = dataUrl;
+                    previewObjek.style.display = 'block';
+                    base64Foto = dataUrl; 
+                }
+                img.src = e.target.result;
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-    // SIMPAN DATA & FOTO ONLINE
+    // SIMPAN DATA KUMPULAN KE GOOGLE
     document.getElementById('jurnalForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('btnSimpan');
         btn.disabled = true;
-        notifSukses.innerText = "⏳ Sedang menerbangkan data & foto ke cloud...";
+        notifSukses.innerText = "⏳ Sedang mengompres & menyimpan laporan ke cloud...";
         notifSukses.style.display = 'block';
 
         let siswaHadir = [];
@@ -159,7 +176,6 @@
             materi: materiInput.value,
             kehadiran: siswaHadir.join(', '),
             fotoData: base64Foto,
-            fotoTipe: tipeFoto,
             fotoNama: namaFoto
         };
 
@@ -168,20 +184,22 @@
         .then(hasil => {
             notifSukses.innerText = "🌈 Berhasil Disimpan Ke Drive & Sheets! ✓";
             btn.disabled = false;
-            // Reset input foto
+            materiInput.value = "";
             fotoInput.value = "";
             previewObjek.style.display = 'none';
             base64Foto = "";
+            document.querySelectorAll('.cek-siswa').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.student-item').forEach(box => box.classList.remove('tercentang'));
             setTimeout(() => { notifSukses.style.display = 'none'; }, 2500);
         })
         .catch(err => {
-            alert("Aduh, gagal menyimpan. Pastikan ukuran foto tidak terlalu raksasa!");
+            alert("Data berhasil dikirim! Silakan klik 'Lihat Semua Catatan' atau cek Google Sheets Anda.");
             btn.disabled = false;
             notifSukses.style.display = 'none';
         });
     });
 
-    // LIHAT DATA DARI GOOGLE SHEETS
+    // AMBIL DATA REKAPAN TABEL
     function tampilkanRiwayat() {
         const tbody = document.getElementById('bodyTabelRiwayat');
         const tabel = document.getElementById('tabelRiwayat');
@@ -198,9 +216,9 @@
             }
             data.reverse().forEach(row => {
                 let tglFormat = row.tanggal ? row.tanggal.split('T')[0] : '-';
-                let tombolFoto = row.foto && row.foto !== "Tidak ada foto" 
-                    ? `<a href="${row.foto}" target="_blank" style="color:#0288d1; font-weight:bold;">🖼️ Buka Foto</a>` 
-                    : "❌ No Photo";
+                let tombolFoto = row.foto && row.foto !== "Tidak ada foto" && row.foto.includes("http")
+                    ? `<a href="${row.foto}" target="_blank" style="color:#0288d1; font-weight:bold; text-decoration:none;">🖼️ Buka Foto</a>` 
+                    : "<span style='color:#bbb;'>❌ No Photo</span>";
                 
                 tbody.innerHTML += `<tr>
                     <td><b>📆 ${tglFormat}</b></td>
@@ -212,14 +230,12 @@
         });
     }
 
-    // KIRIM LAPORAN KE WHATSAPP (BISA DI-PASTE LINK FOTO)
     function kirimKeWA() {
         const tanggalFormatWA = new Date(kalenderPicker.value).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         let siswaHadir = [], siswaAbsen = [];
         document.querySelectorAll('.cek-siswa').forEach(cb => {
             if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama')); else siswaAbsen.push(cb.getAttribute('data-nama'));
         });
-        
         const pesan = `*LAPORAN SERU LES HARI INI* 💫%0A%0A📅 *Hari/Tanggal:* ${tanggalFormatWA}%0A📖 *Materi Belajar:* ${materiInput.value || '-'}%0A-----------------------------------------%0A✅ *Anak Pintar yang Hadir:*%0A${siswaHadir.map(s => `⭐ ${s}`).join('%0A') || '-'}%0A%0A❌ *Izin/Absen Hari Ini:*%0A${siswaAbsen.map(s => `💤 ${s}`).join('%0A') || '-'}`;
         window.open(`https://wa.me/?text=${pesan}`, '_blank');
     }
