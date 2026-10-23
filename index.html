@@ -1,246 +1,619 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 Jurnal Ceria & Laporan Foto Les 🌟</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
-        body { background: linear-gradient(135deg, #ffeb3b, #eceff1, #80deea); background-size: 400% 400%; animation: gantiWarnaBackground 15s ease infinite; padding: 20px; color: #333; }
-        @keyframes gantiWarnaBackground { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .main-wrapper { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .main-wrapper { grid-template-columns: 1.2fr 1fr; } }
-        .card { background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); border: 4px solid #fff; }
-        .judul-animasi { text-align: center; color: #ff6f00; font-weight: 800; font-size: 26px; margin-bottom: 20px; text-shadow: 2px 2px 0px #ffe082; animation: melompat 1.5s ease infinite alternate; }
-        @keyframes melompat { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
-        h3 { color: #0288d1; margin-bottom: 15px; font-weight: 600; }
-        input[type="date"], input[type="file"] { width: 100%; padding: 14px; font-size: 16px; border: 3px solid #0288d1; border-radius: 16px; outline: none; background-color: #fff; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: 600; margin-bottom: 6px; color: #555; }
-        textarea { width: 100%; height: 90px; padding: 12px; border: 3px solid #ffb300; border-radius: 16px; font-size: 15px; resize: none; outline: none; }
-        .student-list { border: 3px solid #81c784; border-radius: 16px; max-height: 200px; overflow-y: auto; background: #f1f8e9; }
-        .student-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 2px dashed #c8e6c9; transition: all 0.3s; }
-        .student-item:last-child { border-bottom: none; }
-        .student-item.tercentang { background-color: #c8e6c9; transform: translateX(5px); }
-        .student-name { font-weight: 600; font-size: 16px; color: #2e7d32; }
-        input[type="checkbox"] { width: 26px; height: 26px; cursor: pointer; accent-color: #4caf50; }
-        .btn-block { display: block; width: 100%; padding: 14px; border: none; border-radius: 16px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 12px; text-align: center; box-shadow: 0 4px 0px rgba(0,0,0,0.15); transition: all 0.1s ease; }
-        .btn-blue { background-color: #29b6f6; color: white; border-bottom: 4px solid #0288d1; }
-        .btn-blue:active { transform: translateY(4px); box-shadow: none; }
-        .btn-green { background-color: #66bb6a; color: white; border-bottom: 4px solid #388e3c; }
-        .btn-green:active { transform: translateY(4px); box-shadow: none; }
-        .btn-action { padding: 12px 20px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; margin-bottom: 15px; background-color: #78909c; color: white; border-bottom: 4px solid #455a64; }
-        .btn-action:active { transform: translateY(4px); box-shadow: none; }
-        .notif { text-align: center; color: #2e7d32; font-weight: bold; margin-top: 10px; display: none; }
-        .riwayat-wrapper { max-width: 900px; margin: 20px auto 0 auto; background: rgba(255,255,255,0.9); }
-        .tabel-riwayat { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; display: none; border-radius: 12px; overflow: hidden; }
-        .tabel-riwayat th, .tabel-riwayat td { padding: 12px; text-align: left; }
-        .tabel-riwayat th { background-color: #b3e5fc; color: #0288d1; }
-        .tabel-riwayat td { background-color: #fff; border-bottom: 1px solid #e0e0e0; }
-        .preview-foto { max-width: 100%; max-height: 150px; margin-top: 10px; border-radius: 12px; display: none; border: 2px dashed #0288d1; margin: 10px auto 0 auto; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+<title>Bimbel Curare — Jurnal Ceria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --paper:#FFF8EC;
+    --ink:#3B2F2F;
+    --ink-soft:#8C7B6B;
+    --sun:#FFB800;
+    --sun-dark:#E59E00;
+    --coral:#FF7A59;
+    --coral-dark:#E35A3B;
+    --mint:#3FBFAE;
+    --sky:#4FA3E3;
+    --pink:#FF8FB1;
+    --card:#FFFFFF;
+    --line: rgba(59,47,47,0.14);
+  }
+  body{
+    font-family:'Quicksand',sans-serif; color:var(--ink);
+    background:
+      repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(79,163,227,0.10) 32px),
+      var(--paper);
+    min-height:100vh; padding:22px 16px 60px;
+    position:relative;
+  }
+  body::before{
+    content:''; position:fixed; top:0; bottom:0; left:38px; width:2px;
+    background:rgba(255,122,89,0.25); pointer-events:none; z-index:0;
+  }
+  h1,h2,h3,.bc-display{ font-family:'Fredoka',sans-serif; }
+  .bc-wrap{ max-width:1000px; margin:0 auto; position:relative; z-index:1; }
+
+  /* ---------- header ---------- */
+  .bc-header{ display:flex; align-items:center; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+  .bc-mascot{ width:58px; height:58px; flex-shrink:0; animation:bcBob 2.6s ease-in-out infinite; }
+  @keyframes bcBob{ 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-5px) rotate(-4deg);} }
+  .bc-header h1{ font-size:26px; font-weight:700; color:var(--coral-dark); margin:0; }
+  .bc-header p{ font-size:13px; font-weight:600; color:var(--ink-soft); margin-top:2px; }
+
+  /* ---------- cards ---------- */
+  .bc-card{
+    background:var(--card); border:3px solid var(--ink); border-radius:22px;
+    box-shadow:5px 5px 0 var(--ink); padding:22px; margin-bottom:20px;
+  }
+  .bc-grid2{ display:grid; grid-template-columns:1fr 1.3fr; gap:20px; align-items:start; }
+  @media (max-width:760px){ .bc-grid2{ grid-template-columns:1fr; } }
+
+  .bc-card h3{ font-size:18px; font-weight:600; color:var(--sky); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+
+  /* ---------- calendar card ---------- */
+  .bc-date-display{
+    background:linear-gradient(135deg,var(--sun),var(--coral)); color:#fff; border-radius:18px;
+    padding:18px; text-align:center; font-weight:700; font-family:'Fredoka',sans-serif; font-size:15px;
+    margin-bottom:14px; box-shadow:3px 3px 0 var(--ink); border:3px solid var(--ink);
+  }
+  .bc-date-display .bc-day{ font-size:30px; display:block; line-height:1; margin:4px 0; }
+
+  /* ---------- form ---------- */
+  .bc-field{ margin-bottom:16px; }
+  .bc-field label{ display:block; font-weight:700; font-size:13px; margin-bottom:6px; color:var(--ink); }
+  .bc-field input[type=date], .bc-field textarea{
+    width:100%; font-family:'Quicksand',sans-serif; font-size:16px; padding:12px 14px;
+    border:2.5px solid var(--ink); border-radius:14px; background:#fffef9; color:var(--ink);
+  }
+  .bc-field textarea{ resize:vertical; min-height:80px; font-weight:600; }
+  .bc-field input:focus, .bc-field textarea:focus{ outline:3px solid var(--pink); outline-offset:1px; }
+
+  .bc-student-list{
+    border:2.5px solid var(--mint); border-radius:16px; max-height:220px; overflow-y:auto; background:#F1FBF9;
+  }
+  .bc-student-item{
+    display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
+    border-bottom:2px dashed rgba(63,191,174,0.3); transition:background .2s ease, transform .15s ease;
+  }
+  .bc-student-item:last-child{ border-bottom:none; }
+  .bc-student-item.on{ background:#D7F4EF; transform:translateX(4px); }
+  .bc-student-name{ font-weight:700; font-size:15px; color:#1f6e63; }
+  .bc-student-item input[type=checkbox]{ width:26px; height:26px; accent-color:var(--mint); cursor:pointer; }
+
+  .bc-photo-btns{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+  .bc-photo-btn{
+    flex:1 1 150px; font-family:'Quicksand',sans-serif; font-weight:700; font-size:13px;
+    border:2.5px solid var(--ink); border-radius:14px; padding:12px 10px; cursor:pointer;
+    background:#fffef9; color:var(--ink); transition:transform .12s ease, background .12s ease;
+  }
+  .bc-photo-btn:hover{ background:#FFF3DA; transform:translateY(-1px); }
+  .bc-photo-btn:active{ transform:translateY(1px); }
+  .bc-photo-preview-wrap{ position:relative; display:inline-block; margin-top:4px; }
+  .bc-photo-preview-wrap img{ max-width:100%; max-height:200px; border-radius:14px; border:3px solid var(--ink); display:block; }
+  .bc-photo-remove{
+    position:absolute; top:-10px; right:-10px; width:28px; height:28px; border-radius:50%;
+    background:var(--coral); color:#fff; border:2.5px solid var(--ink); font-weight:800; cursor:pointer;
+  }
+  .bc-photo-status{ font-size:12px; font-weight:700; color:var(--ink-soft); margin-top:6px; min-height:16px; }
+  .bc-photo-status.error{ color:var(--coral-dark); }
+
+  .bc-btn{
+    display:block; width:100%; font-family:'Fredoka',sans-serif; font-weight:600; font-size:16px;
+    color:#fff; border:3px solid var(--ink); border-radius:16px; padding:13px 20px; cursor:pointer;
+    box-shadow:4px 4px 0 var(--ink); transition:transform .12s ease, box-shadow .12s ease; margin-top:10px;
+    text-align:center;
+  }
+  .bc-btn:hover{ transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--ink); }
+  .bc-btn:active{ transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+  .bc-btn:disabled{ opacity:.6; cursor:default; }
+  .bc-btn.sky{ background:var(--sky); }
+  .bc-btn.mint{ background:var(--mint); }
+  .bc-btn.coral{ background:var(--coral); }
+  .bc-btn.ghost{ background:#fff; color:var(--ink); box-shadow:3px 3px 0 var(--ink); }
+
+  @keyframes bcPulse{ 0%{transform:scale(1);} 50%{transform:scale(1.04);} 100%{transform:scale(1);} }
+  .bc-btn.celebrate{ animation:bcPulse .35s ease; }
+
+  .bc-notif{ text-align:center; font-weight:700; margin-top:10px; display:none; font-size:13px; color:var(--ink-soft); }
+
+  /* ---------- history ---------- */
+  .bc-hist-head{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .bc-count-badge{
+    font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; background:#FFF3DA;
+    border:2.5px solid var(--ink); border-radius:999px; padding:6px 14px; color:var(--sun-dark);
+  }
+  .bc-hist-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+  .bc-hist-actions .bc-btn{ width:auto; margin-top:0; font-size:13px; padding:10px 16px; }
+
+  .bc-empty{ text-align:center; padding:34px 16px; color:var(--ink-soft); font-weight:700; }
+  .bc-empty svg{ width:70px; height:70px; margin-bottom:10px; animation:bcBob 2.4s ease-in-out infinite; }
+
+  .bc-polaroid-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:22px; padding:6px; }
+  .bc-polaroid{
+    background:#fff; border:1px solid #e9e2d5; border-radius:4px; padding:10px 10px 16px;
+    box-shadow:0 6px 14px rgba(59,47,47,0.14); transform:rotate(var(--tilt,-2deg));
+    transition:transform .2s ease, box-shadow .2s ease; position:relative;
+  }
+  .bc-polaroid:nth-child(odd){ --tilt:-2.5deg; }
+  .bc-polaroid:nth-child(even){ --tilt:2deg; }
+  .bc-polaroid:nth-child(3n){ --tilt:-1.5deg; }
+  .bc-polaroid:hover{ transform:rotate(0deg) scale(1.03); box-shadow:0 10px 18px rgba(59,47,47,0.22); z-index:2; }
+  .bc-polaroid .bc-tape{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%) rotate(-3deg);
+    width:54px; height:20px; background:rgba(255,184,0,0.55); border:1px solid rgba(59,47,47,0.15);
+  }
+  .bc-polaroid-photo{ width:100%; aspect-ratio:1/1; object-fit:cover; background:#f1ece0; border-radius:2px; display:block; cursor:pointer; }
+  .bc-polaroid-photo-empty{ width:100%; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; font-size:30px; background:#f1ece0; border-radius:2px; }
+  .bc-polaroid-body{ padding-top:10px; }
+  .bc-polaroid-date{ font-family:'Fredoka',sans-serif; font-size:12px; font-weight:600; color:var(--coral-dark); }
+  .bc-polaroid-materi{ font-size:12.5px; font-weight:600; color:var(--ink); margin:4px 0 6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .bc-chip-row{ display:flex; gap:4px; flex-wrap:wrap; }
+  .bc-chip{ font-size:10.5px; font-weight:700; background:#F1FBF9; color:#1f6e63; border:1.5px solid var(--mint); border-radius:999px; padding:2px 8px; }
+  .bc-polaroid-del{
+    position:absolute; bottom:6px; right:8px; background:none; border:none; font-size:14px; cursor:pointer; opacity:.5;
+  }
+  .bc-polaroid-del:hover{ opacity:1; }
+
+  @keyframes bcPopIn{ from{opacity:0; transform:scale(.85) translateY(10px);} to{opacity:1; transform:scale(1) translateY(0);} }
+  .bc-polaroid.bc-pop{ animation:bcPopIn .35s cubic-bezier(.34,1.56,.64,1) backwards; }
+
+  /* ---------- danger zone / reset ---------- */
+  .bc-danger-zone{
+    border:3px dashed var(--coral); border-radius:18px; padding:16px 18px; margin-top:18px;
+    background:#FFF4F1;
+  }
+  .bc-danger-zone h4{ font-family:'Fredoka',sans-serif; font-size:14px; color:var(--coral-dark); margin-bottom:6px; }
+  .bc-danger-zone p{ font-size:12.5px; color:var(--ink-soft); font-weight:600; margin-bottom:10px; }
+
+  /* ---------- modal ---------- */
+  .bc-modal{ position:fixed; inset:0; background:rgba(59,47,47,0.6); display:flex; align-items:center; justify-content:center; padding:20px; z-index:80; }
+  .bc-modal.hidden{ display:none; }
+  .bc-modal-inner{ background:#fff; border:3px solid var(--ink); border-radius:18px; padding:20px; max-width:380px; width:100%; box-shadow:6px 6px 0 var(--ink); }
+  .bc-modal-inner.wide{ max-width:90vw; max-height:88vh; padding:12px; text-align:center; }
+  .bc-modal-inner.wide img{ max-width:100%; max-height:76vh; border-radius:10px; display:block; margin:0 auto; }
+  .bc-modal-inner h4{ font-family:'Fredoka',sans-serif; color:var(--coral-dark); font-size:17px; margin-bottom:8px; }
+  .bc-modal-inner p{ font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:12px; line-height:1.5; }
+  .bc-modal-inner input[type=text]{
+    width:100%; padding:11px 12px; border:2.5px solid var(--ink); border-radius:12px; font-size:16px;
+    font-family:'Quicksand',sans-serif; margin-bottom:12px; text-transform:uppercase;
+  }
+  .bc-modal-btn-row{ display:flex; gap:10px; }
+  .bc-modal-btn-row .bc-btn{ margin-top:0; }
+
+  .bc-toast{
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(10px); background:var(--mint);
+    color:#fff; border:3px solid var(--ink); border-radius:16px; padding:12px 20px; font-weight:700;
+    box-shadow:4px 4px 0 var(--ink); opacity:0; transition:all .25s ease; z-index:90; font-size:14px;
+  }
+  .bc-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .bc-mascot, .bc-empty svg, .bc-polaroid.bc-pop, .bc-btn.celebrate{ animation:none !important; }
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width:560px){
+    body{ padding:16px 10px 50px; }
+    .bc-card{ padding:16px; border-radius:16px; }
+    .bc-header h1{ font-size:21px; }
+    .bc-mascot{ width:44px; height:44px; }
+    .bc-polaroid-grid{ grid-template-columns:repeat(2,1fr); gap:14px; }
+    .bc-photo-btn{ flex:1 1 100%; }
+    .bc-hist-actions{ width:100%; }
+    .bc-hist-actions .bc-btn{ flex:1; }
+  }
+</style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <div class="card">
-        <h2 class="judul-animasi">🎈 BIMBEL CURARE 🎈</h2>
-        <div class="form-group"><input type="date" id="kalenderPicker"></div>
+<div class="bc-wrap">
+
+  <div class="bc-header">
+    <svg class="bc-mascot" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="55" r="26" fill="#FFB800"/>
+      <path d="M50 10 L54 24 L46 24 Z" fill="#FFB800"/>
+      <path d="M20 40 L32 44 M80 40 L68 44 M24 70 L35 64 M76 70 L65 64" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="44" cy="52" r="3" fill="#3B2F2F"/>
+      <circle cx="56" cy="52" r="3" fill="#3B2F2F"/>
+      <path d="M43 60 Q50 65 57 60" stroke="#3B2F2F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <rect x="34" y="34" width="32" height="8" rx="2" fill="#3B2F2F"/>
+      <rect x="46" y="30" width="8" height="6" rx="1" fill="#3B2F2F"/>
+    </svg>
+    <div>
+      <h1>🎈 Bimbel Curare</h1>
+      <p>Jurnal Ceria & Laporan Kegiatan Belajar</p>
+    </div>
+  </div>
+
+  <div class="bc-grid2">
+    <div class="bc-card">
+      <h3>📅 Pilih Tanggal</h3>
+      <div class="bc-field">
+        <input type="date" id="kalenderPicker">
+      </div>
+      <div class="bc-date-display">
+        <span>Jurnal Hari Ini</span>
+        <span class="bc-day" id="displayHari"></span>
+        <span id="displayTanggalFull"></span>
+      </div>
     </div>
 
-    <div class="card">
-        <h3 id="displayTanggal">✨ Detail Jurnal ✨</h3>
-        <form id="jurnalForm">
-            <div class="form-group">
-                <label for="materi">✏️ Materi Pelajaran Hari Ini</label>
-                <textarea id="materi" placeholder="Tulis materi seru hari ini..."></textarea>
-            </div>
-            <div class="form-group">
-                <label>🎒 Siapa Saja yang Datang?</label>
-                <div class="student-list" id="daftarSiswaContainer"></div>
-            </div>
-            
-            <div class="form-group">
-                <label>📸 Dokumentasi Foto Kegiatan</label>
-                <input type="file" id="fotoInput" accept="image/*" onchange="prosesDanKompresFoto(this)">
-                <img id="previewObjek" class="preview-foto" src="" alt="Preview Foto">
-            </div>
+    <div class="bc-card">
+      <h3>✨ Detail Jurnal</h3>
+      <form id="jurnalForm">
+        <div class="bc-field">
+          <label for="materi">✏️ Materi Pelajaran Hari Ini</label>
+          <textarea id="materi" placeholder="Tulis materi seru hari ini..." required></textarea>
+        </div>
+        <div class="bc-field">
+          <label>🎒 Siapa Saja yang Datang?</label>
+          <div class="bc-student-list" id="daftarSiswaContainer"></div>
+        </div>
+        <div class="bc-field">
+          <label>📸 Dokumentasi Foto Kegiatan</label>
+          <div class="bc-photo-btns">
+            <button type="button" class="bc-photo-btn" id="cameraBtn">📷 Ambil Foto</button>
+            <button type="button" class="bc-photo-btn" id="galleryBtn">🖼️ Pilih dari Galeri</button>
+          </div>
+          <input type="file" accept="image/*" capture="environment" id="fotoCamera" style="display:none;">
+          <input type="file" accept="image/*" id="fotoGallery" style="display:none;">
+          <div id="photoPreviewWrap" class="bc-photo-preview-wrap" style="display:none;">
+            <img id="previewObjek" alt="Preview foto">
+            <button type="button" id="photoRemoveBtn" class="bc-photo-remove">✕</button>
+          </div>
+          <p id="photoStatus" class="bc-photo-status"></p>
+        </div>
 
-            <button type="submit" id="btnSimpan" class="btn-block btn-blue">🚀 Simpan ke Cloud & Drive</button>
-            <button type="button" class="btn-block btn-green" onclick="kirimKeWA()">🎉 Kirim Laporan ke WA</button>
-            <div class="notif" id="notifSukses">Memproses data...</div>
-        </form>
+        <button type="submit" id="btnSimpan" class="bc-btn sky">🚀 Simpan ke Cloud & Drive</button>
+        <button type="button" class="bc-btn mint" onclick="kirimKeWA()">🎉 Kirim Laporan ke WA</button>
+        <div class="bc-notif" id="notifSukses"></div>
+      </form>
     </div>
+  </div>
+
+  <div class="bc-card">
+    <div class="bc-hist-head">
+      <h3 style="margin:0;">📂 Catatan Jurnal Guru <span class="bc-count-badge" id="countBadge">0 catatan</span></h3>
+      <div class="bc-hist-actions">
+        <button class="bc-btn ghost" id="btnLihatRiwayat">👁️ Lihat Semua Catatan</button>
+      </div>
+    </div>
+    <div id="historyArea"></div>
+
+    <div class="bc-danger-zone">
+      <h4>⚠️ Zona Reset</h4>
+      <p>Mengosongkan SEMUA catatan jurnal guru sampai kembali ke 0. Aksi ini tidak bisa dibatalkan — foto yang sudah terupload di Drive tidak terhapus otomatis.</p>
+      <button class="bc-btn coral" id="btnBukaReset" style="margin-top:0;">🗑️ Reset Semua Catatan</button>
+    </div>
+  </div>
+
 </div>
 
-<div class="riwayat-wrapper card">
-    <h3>📂 Catatan Jurnal Guru</h3>
-    <button class="btn-action" onclick="tampilkanRiwayat()">👁️ Lihat Semua Catatan</button>
-    <table class="tabel-riwayat" id="tabelRiwayat">
-        <thead>
-            <tr><th>Tanggal</th><th>Materi Pembelajaran</th><th>Siswa Hadir</th><th>Foto Laporan</th></tr>
-        </thead>
-        <tbody id="bodyTabelRiwayat"></tbody>
-    </table>
+<div class="bc-modal hidden" id="resetModal">
+  <div class="bc-modal-inner">
+    <h4>Yakin reset semua catatan?</h4>
+    <p>Ketik <b>HAPUS</b> di bawah ini untuk mengonfirmasi. Semua catatan guru akan kembali ke 0 dan tidak bisa dikembalikan.</p>
+    <input type="text" id="confirmResetInput" placeholder="Ketik HAPUS">
+    <div class="bc-modal-btn-row">
+      <button class="bc-btn ghost" id="btnBatalReset" style="flex:1;">Batal</button>
+      <button class="bc-btn coral" id="btnKonfirmasiReset" style="flex:1;" disabled>Reset Sekarang</button>
+    </div>
+  </div>
 </div>
+
+<div class="bc-modal hidden" id="photoModal">
+  <div class="bc-modal-inner wide">
+    <img id="modalImg" src="" alt="Foto laporan">
+    <button class="bc-btn ghost" id="btnTutupFoto" style="margin-top:12px;">Tutup</button>
+  </div>
+</div>
+
+<div class="bc-toast" id="toast"></div>
 
 <script>
-    // =================================================================
-    // KOPAS LINK WEB APP APPS SCRIPT ANDA (YANG ADA KATA /macros/) DI SINI
-    // =================================================================
-    const URL_DATABASE = "https://script.google.com/macros/s/AKfycbzb84jeclqb5sJEyJqyDgm7EIOe3uXO16tJ1oDRkwaRAWm26qn8aMyfuKeD3McBlge99g/exec";
+  // =================================================================
+  // KOPAS LINK WEB APP APPS SCRIPT ANDA (YANG DIAKHIRI /exec) DI SINI
+  // =================================================================
+  const URL_DATABASE = "https://script.google.com/macros/s/AKfycbzb84jeclqb5sJEyJqyDgm7EIOe3uXO16tJ1oDRkwaRAWm26qn8aMyfuKeD3McBlge99g/exec";
 
-    const daftarSiswa = ["Talitha 👧"];
+  const daftarSiswa = ["Talitha 👧"];
 
-    const kalenderPicker = document.getElementById('kalenderPicker');
-    const displayTanggal = document.getElementById('displayTanggal');
-    const materiInput = document.getElementById('materi');
-    const containerSiswa = document.getElementById('daftarSiswaContainer');
-    const notifSukses = document.getElementById('notifSukses');
-    const fotoInput = document.getElementById('fotoInput');
-    const previewObjek = document.getElementById('previewObjek');
-    
-    let base64Foto = "", namaFoto = "";
+  const $ = (id) => document.getElementById(id);
+  const kalenderPicker = $('kalenderPicker');
+  const materiInput = $('materi');
+  const containerSiswa = $('daftarSiswaContainer');
+  const notifSukses = $('notifSukses');
 
-    const hariIni = new Date().toISOString().split('T')[0];
-    kalenderPicker.value = hariIni;
-    displayTanggal.innerText = "✨ Jurnal: " + new Date(hariIni).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+  const hariIni = new Date().toISOString().split('T')[0];
+  kalenderPicker.value = hariIni;
 
-    function susunDaftarSiswa() {
-        containerSiswa.innerHTML = '';
-        daftarSiswa.forEach((nama, index) => {
-            containerSiswa.innerHTML += `
-                <div class="student-item" id="box_siswa_${index}">
-                    <span class="student-name">${nama}</span>
-                    <input type="checkbox" class="cek-siswa" data-nama="${nama}" onchange="efekCentang(this, 'box_siswa_${index}')">
-                </div>`;
-        });
-    }
+  function updateDisplayTanggal(){
+    const d = new Date(kalenderPicker.value + 'T00:00:00');
+    $('displayHari').innerText = d.toLocaleDateString('id-ID', { weekday: 'long' });
+    $('displayTanggalFull').innerText = d.toLocaleDateString('id-ID', { year:'numeric', month:'long', day:'numeric' });
+  }
+  updateDisplayTanggal();
+  kalenderPicker.addEventListener('change', updateDisplayTanggal);
 
-    function efekCentang(checkbox, boxId) {
-        document.getElementById(boxId).classList.toggle('tercentang', checkbox.checked);
-    }
-
-    // --- PERBAIKAN: Fungsi kompresor gambar canvas sudah dibetulkan total ---
-    function prosesDanKompresFoto(input) {
-        if (input.files && input.files[0]) {
-            namaFoto = input.files[0].name;
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var img = new Image();
-                img.onload = function() {
-                    var canvas = document.createElement('canvas');
-                    var max_size = 700; 
-                    var width = img.width;
-                    var height = img.height;
-
-                    if (width > height) {
-                        if (width > max_size) { height *= max_size / width; width = max_size; }
-                    } else {
-                        if (height > max_size) { width *= max_size / height; height = max_size; }
-                    }
-                    canvas.width = width;
-                    canvas.height = height;
-                    
-                    var ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    // Memperbaiki typo pemanggilan fungsi data URL di bawah ini
-                    var dataUrl = canvas.toDataURL('image/jpeg', 0.6);
-                    previewObjek.src = dataUrl;
-                    previewObjek.style.display = 'block';
-                    base64Foto = dataUrl; 
-                }
-                img.src = e.target.result;
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    // SIMPAN DATA KUMPULAN KE GOOGLE
-    document.getElementById('jurnalForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('btnSimpan');
-        btn.disabled = true;
-        notifSukses.innerText = "⏳ Sedang mengompres & menyimpan laporan ke cloud...";
-        notifSukses.style.display = 'block';
-
-        let siswaHadir = [];
-        document.querySelectorAll('.cek-siswa').forEach(cb => {
-            if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama'));
-        });
-
-        const dataKirim = {
-            tanggal: kalenderPicker.value,
-            materi: materiInput.value,
-            kehadiran: siswaHadir.join(', '),
-            fotoData: base64Foto,
-            fotoNama: namaFoto
-        };
-
-        fetch(URL_DATABASE, { method: "POST", body: JSON.stringify(dataKirim) })
-        .then(res => res.json())
-        .then(hasil => {
-            notifSukses.innerText = "🌈 Berhasil Disimpan Ke Drive & Sheets! ✓";
-            btn.disabled = false;
-            materiInput.value = "";
-            fotoInput.value = "";
-            previewObjek.style.display = 'none';
-            base64Foto = "";
-            document.querySelectorAll('.cek-siswa').forEach(cb => cb.checked = false);
-            document.querySelectorAll('.student-item').forEach(box => box.classList.remove('tercentang'));
-            setTimeout(() => { notifSukses.style.display = 'none'; }, 2500);
-        })
-        .catch(err => {
-            alert("Data berhasil dikirim! Silakan klik 'Lihat Semua Catatan' atau cek Google Sheets Anda.");
-            btn.disabled = false;
-            notifSukses.style.display = 'none';
-        });
+  function susunDaftarSiswa(){
+    containerSiswa.innerHTML = '';
+    daftarSiswa.forEach((nama, index) => {
+      containerSiswa.innerHTML += `
+        <div class="bc-student-item" id="box_siswa_${index}">
+          <span class="bc-student-name">${nama}</span>
+          <input type="checkbox" class="cek-siswa" data-nama="${nama}" onchange="efekCentang(this, 'box_siswa_${index}')">
+        </div>`;
     });
+  }
+  function efekCentang(checkbox, boxId){
+    $(boxId).classList.toggle('on', checkbox.checked);
+  }
+  susunDaftarSiswa();
 
-    // AMBIL DATA REKAPAN TABEL
-    function tampilkanRiwayat() {
-        const tbody = document.getElementById('bodyTabelRiwayat');
-        const tabel = document.getElementById('tabelRiwayat');
-        tbody.innerHTML = '<tr><td colspan="4">Sedang memanggil catatan... 📡</td></tr>';
-        tabel.style.display = 'table';
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function showToast(msg){
+    const t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(()=> t.classList.remove('show'), 2800);
+  }
 
-        fetch(URL_DATABASE)
-        .then(res => res.json())
-        .then(data => {
-            tbody.innerHTML = '';
-            if(data.length === 0){
-                tbody.innerHTML = '<tr><td colspan="4">Belum ada catatan.</td></tr>';
-                return;
-            }
-            data.reverse().forEach(row => {
-                let tglFormat = row.tanggal ? row.tanggal.split('T')[0] : '-';
-                let tombolFoto = row.foto && row.foto !== "Tidak ada foto" && row.foto.includes("http")
-                    ? `<a href="${row.foto}" target="_blank" style="color:#0288d1; font-weight:bold; text-decoration:none;">🖼️ Buka Foto</a>` 
-                    : "<span style='color:#bbb;'>❌ No Photo</span>";
-                
-                tbody.innerHTML += `<tr>
-                    <td><b>📆 ${tglFormat}</b></td>
-                    <td>✏️ ${row.materi || '-'}</td>
-                    <td>⭐ ${row.kehadiran || 'Tidak ada'}</td>
-                    <td>${tombolFoto}</td>
-                </tr>`;
+  // ---------- foto: kamera / galeri ----------
+  let base64Foto = "", namaFoto = "";
+
+  function setPhotoStatus(msg, isError){
+    const el = $('photoStatus');
+    el.textContent = msg || '';
+    el.classList.toggle('error', !!isError);
+  }
+  function resetPhotoUI(){
+    base64Foto = ""; namaFoto = "";
+    $('photoPreviewWrap').style.display = 'none';
+    $('previewObjek').src = '';
+    $('fotoCamera').value = '';
+    $('fotoGallery').value = '';
+    setPhotoStatus('');
+  }
+  $('cameraBtn').addEventListener('click', ()=> $('fotoCamera').click());
+  $('galleryBtn').addEventListener('click', ()=> $('fotoGallery').click());
+  $('photoRemoveBtn').addEventListener('click', resetPhotoUI);
+
+  function prosesDanKompresFoto(file){
+    return new Promise((resolve, reject)=>{
+      if (!file) { reject(new Error('Tidak ada file')); return; }
+      if (!file.type || file.type.indexOf('image/') !== 0) {
+        reject(new Error('File bukan gambar (' + (file.type || 'format tidak dikenal') + ')'));
+        return;
+      }
+      namaFoto = file.name;
+      const reader = new FileReader();
+      reader.onload = (e)=>{
+        const img = new Image();
+        img.onload = ()=>{
+          try{
+            const maxSize = 700;
+            let width = img.width, height = img.height;
+            if (width > height) { if (width > maxSize) { height *= maxSize/width; width = maxSize; } }
+            else { if (height > maxSize) { width *= maxSize/height; height = maxSize; } }
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.max(1, Math.round(width));
+            canvas.height = Math.max(1, Math.round(height));
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resolve(canvas.toDataURL('image/jpeg', 0.6));
+          }catch(err){ reject(err); }
+        };
+        img.onerror = ()=> reject(new Error('Format foto tidak didukung browser ini'));
+        img.src = e.target.result;
+      };
+      reader.onerror = ()=> reject(new Error('Gagal membaca file foto'));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function handlePhotoFile(file){
+    if (!file) return;
+    setPhotoStatus('⏳ Memproses foto...');
+    try{
+      base64Foto = await prosesDanKompresFoto(file);
+      $('previewObjek').src = base64Foto;
+      $('photoPreviewWrap').style.display = 'inline-block';
+      const kb = Math.round(base64Foto.length * 0.75 / 1024);
+      setPhotoStatus('✅ Foto siap (±' + kb + ' KB)');
+    }catch(err){
+      base64Foto = "";
+      setPhotoStatus('⚠️ ' + err.message, true);
+    }
+  }
+  $('fotoCamera').addEventListener('change', (e)=> handlePhotoFile(e.target.files[0]));
+  $('fotoGallery').addEventListener('change', (e)=> handlePhotoFile(e.target.files[0]));
+
+  // ---------- simpan laporan ----------
+  $('jurnalForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = $('btnSimpan');
+    btn.disabled = true;
+    notifSukses.style.display = 'block';
+    notifSukses.innerText = '⏳ Sedang menyimpan laporan ke cloud...';
+
+    let siswaHadir = [];
+    document.querySelectorAll('.cek-siswa').forEach(cb => { if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama')); });
+
+    const dataKirim = {
+      tanggal: kalenderPicker.value,
+      materi: materiInput.value,
+      kehadiran: siswaHadir.join(', '),
+      fotoData: base64Foto,
+      fotoNama: namaFoto
+    };
+
+    try{
+      const res = await fetch(URL_DATABASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(dataKirim)
+      });
+      if (!res.ok) throw new Error('Server merespons HTTP ' + res.status);
+      let hasil;
+      try{ hasil = await res.json(); }
+      catch(e){ throw new Error('Respons server tidak valid (cek URL Apps Script)'); }
+      if (!hasil || !hasil.success) throw new Error((hasil && hasil.error) ? hasil.error : 'Server menolak menyimpan');
+
+      notifSukses.innerText = '🌈 Berhasil disimpan ke Drive & Sheets!';
+      btn.classList.add('celebrate');
+      setTimeout(()=> btn.classList.remove('celebrate'), 400);
+      materiInput.value = '';
+      resetPhotoUI();
+      document.querySelectorAll('.cek-siswa').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.bc-student-item').forEach(box => box.classList.remove('on'));
+      setTimeout(()=> { notifSukses.style.display = 'none'; }, 2600);
+      if (historyLoaded) tampilkanRiwayat();
+    }catch(err){
+      console.error('Gagal menyimpan:', err);
+      notifSukses.innerText = '⚠️ Gagal menyimpan: ' + err.message;
+    }finally{
+      btn.disabled = false;
+    }
+  });
+
+  // ---------- riwayat (polaroid grid) ----------
+  let historyLoaded = false;
+  let lastRecords = [];
+
+  $('btnLihatRiwayat').addEventListener('click', ()=>{
+    historyLoaded = true;
+    tampilkanRiwayat();
+  });
+
+  function emptyStateHtml(msg){
+    return `<div class="bc-empty">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="28" fill="#FFB800"/>
+        <circle cx="42" cy="46" r="3" fill="#3B2F2F"/>
+        <circle cx="58" cy="46" r="3" fill="#3B2F2F"/>
+        <path d="M40 58 Q50 65 60 58" stroke="#3B2F2F" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <p>${msg}</p>
+    </div>`;
+  }
+
+  function polaroidCard(row, i){
+    const foto = (row.foto && String(row.foto).indexOf('http') === 0)
+      ? `<img class="bc-polaroid-photo" data-src="${row.foto}" src="${row.foto}" alt="Foto laporan">`
+      : `<div class="bc-polaroid-photo-empty">🧸</div>`;
+    const tgl = row.tanggal ? String(row.tanggal).split('T')[0] : '-';
+    const kehadiran = (row.kehadiran || '').split(',').map(s=>s.trim()).filter(Boolean);
+    const delay = (i * 0.05).toFixed(2);
+    const delBtn = row.id ? `<button class="bc-polaroid-del" data-id="${row.id}" title="Hapus catatan ini">🗑️</button>` : '';
+    return `<div class="bc-polaroid bc-pop" style="animation-delay:${delay}s">
+      <div class="bc-tape"></div>
+      ${foto}
+      <div class="bc-polaroid-body">
+        <div class="bc-polaroid-date">📆 ${tgl}</div>
+        <div class="bc-polaroid-materi">${escapeHtml(row.materi || '-')}</div>
+        <div class="bc-chip-row">${kehadiran.map(s=>`<span class="bc-chip">⭐ ${escapeHtml(s)}</span>`).join('') || '<span class="bc-chip">Tidak ada</span>'}</div>
+      </div>
+      ${delBtn}
+    </div>`;
+  }
+
+  async function tampilkanRiwayat(){
+    const area = $('historyArea');
+    area.innerHTML = '<p style="font-weight:700; color:var(--ink-soft); padding:12px 0;">📡 Sedang memanggil catatan...</p>';
+    try{
+      const res = await fetch(URL_DATABASE + '?action=list');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      lastRecords = Array.isArray(data) ? data : [];
+      $('countBadge').textContent = lastRecords.length + ' catatan';
+      if (lastRecords.length === 0){
+        area.innerHTML = emptyStateHtml('Belum ada catatan. Yuk isi jurnal pertama hari ini! ✏️');
+        return;
+      }
+      const sorted = [...lastRecords].reverse();
+      area.innerHTML = `<div class="bc-polaroid-grid">${sorted.map((r,i)=>polaroidCard(r,i)).join('')}</div>`;
+
+      area.querySelectorAll('.bc-polaroid-photo').forEach(img=>{
+        img.onclick = ()=>{ $('modalImg').src = img.dataset.src; $('photoModal').classList.remove('hidden'); };
+      });
+      area.querySelectorAll('.bc-polaroid-del').forEach(btn=>{
+        btn.onclick = async ()=>{
+          if (!confirm('Hapus catatan ini?')) return;
+          try{
+            const r = await fetch(URL_DATABASE, {
+              method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
+              body: JSON.stringify({ action:'delete', id: btn.dataset.id })
             });
-        });
+            const d = await r.json();
+            if (!d || !d.success) throw new Error(d && d.error ? d.error : 'Gagal menghapus');
+            showToast('Catatan dihapus');
+            tampilkanRiwayat();
+          }catch(err){
+            showToast('Gagal menghapus: ' + err.message);
+          }
+        };
+      });
+    }catch(err){
+      console.error('Gagal memuat riwayat:', err);
+      area.innerHTML = emptyStateHtml('⚠️ Gagal memuat catatan: ' + err.message);
     }
+  }
 
-    function kirimKeWA() {
-        const tanggalFormatWA = new Date(kalenderPicker.value).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        let siswaHadir = [], siswaAbsen = [];
-        document.querySelectorAll('.cek-siswa').forEach(cb => {
-            if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama')); else siswaAbsen.push(cb.getAttribute('data-nama'));
-        });
-        const pesan = `*LAPORAN SERU LES HARI INI* 💫%0A%0A📅 *Hari/Tanggal:* ${tanggalFormatWA}%0A📖 *Materi Belajar:* ${materiInput.value || '-'}%0A-----------------------------------------%0A✅ *Anak Pintar yang Hadir:*%0A${siswaHadir.map(s => `⭐ ${s}`).join('%0A') || '-'}%0A%0A❌ *Izin/Absen Hari Ini:*%0A${siswaAbsen.map(s => `💤 ${s}`).join('%0A') || '-'}`;
-        window.open(`https://wa.me/?text=${pesan}`, '_blank');
+  // ---------- reset semua catatan (kembali ke 0) ----------
+  $('btnBukaReset').addEventListener('click', ()=>{
+    $('confirmResetInput').value = '';
+    $('btnKonfirmasiReset').disabled = true;
+    $('resetModal').classList.remove('hidden');
+    $('confirmResetInput').focus();
+  });
+  $('btnBatalReset').addEventListener('click', ()=> $('resetModal').classList.add('hidden'));
+  $('confirmResetInput').addEventListener('input', (e)=>{
+    $('btnKonfirmasiReset').disabled = e.target.value.trim().toUpperCase() !== 'HAPUS';
+  });
+  $('btnKonfirmasiReset').addEventListener('click', async ()=>{
+    const btn = $('btnKonfirmasiReset');
+    btn.disabled = true;
+    btn.textContent = 'Mereset...';
+    try{
+      const res = await fetch(URL_DATABASE, {
+        method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify({ action:'reset' })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      if (!data || !data.success) throw new Error(data && data.error ? data.error : 'Server menolak reset');
+      $('resetModal').classList.add('hidden');
+      showToast('📘 Catatan guru sudah kembali ke 0');
+      historyLoaded = true;
+      tampilkanRiwayat();
+    }catch(err){
+      showToast('Gagal reset: ' + err.message);
+    }finally{
+      btn.textContent = 'Reset Sekarang';
+      btn.disabled = false;
     }
+  });
 
-    susunDaftarSiswa();
+  // ---------- modal foto ----------
+  $('btnTutupFoto').addEventListener('click', ()=> $('photoModal').classList.add('hidden'));
+  $('photoModal').addEventListener('click', (e)=>{ if (e.target.id === 'photoModal') $('photoModal').classList.add('hidden'); });
+
+  // ---------- kirim ke WA ----------
+  function kirimKeWA(){
+    const tanggalFormatWA = new Date(kalenderPicker.value + 'T00:00:00').toLocaleDateString('id-ID', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    let siswaHadir = [], siswaAbsen = [];
+    document.querySelectorAll('.cek-siswa').forEach(cb=>{
+      if (cb.checked) siswaHadir.push(cb.getAttribute('data-nama')); else siswaAbsen.push(cb.getAttribute('data-nama'));
+    });
+    const pesan = `*LAPORAN SERU LES HARI INI* 💫%0A%0A📅 *Hari/Tanggal:* ${tanggalFormatWA}%0A📖 *Materi Belajar:* ${materiInput.value || '-'}%0A-----------------------------------------%0A✅ *Anak Pintar yang Hadir:*%0A${siswaHadir.map(s=>`⭐ ${s}`).join('%0A') || '-'}%0A%0A❌ *Izin/Absen Hari Ini:*%0A${siswaAbsen.map(s=>`💤 ${s}`).join('%0A') || '-'}`;
+    window.open(`https://wa.me/?text=${pesan}`, '_blank');
+  }
 </script>
 </body>
 </html>
